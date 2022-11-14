@@ -1,6 +1,6 @@
 from PyQt5 import QtCore
 from PyQt5.QtCore import QSize, Qt
-from PyQt5.QtGui import QFont, QIcon, QPixmap, QKeySequence, QCursor
+from PyQt5.QtGui import QFont, QIcon, QPixmap, QCursor
 from PyQt5.QtWidgets import QWidget, QLabel, QVBoxLayout, QHBoxLayout, QPushButton, QMessageBox
 
 from lista_clienti.view.VistaListaClienti import VistaListaClienti
@@ -16,6 +16,7 @@ class VistaAmministratore(QWidget):
         self.move(250, 150)
 
         self.v_layout = QVBoxLayout()
+        self.setStyleSheet("background-color: rgb(5, 5, 5);")
 
         self.label_icona = QLabel("Amministratore")
         self.label_icona.setPixmap(QPixmap('images/profilo_utente.png').scaled(QSize(250,250), Qt.KeepAspectRatio, Qt.SmoothTransformation))
@@ -24,6 +25,7 @@ class VistaAmministratore(QWidget):
 
         self.label_nome = QLabel(nome)
         self.label_nome.setFont(QFont("American Typewriter", 20))
+        self.label_nome.setStyleSheet("color: white;")
         self.label_nome.setAlignment(Qt.AlignCenter)
         self.v_layout.addWidget(self.label_nome)
         self.v_layout.addSpacing(20)
@@ -33,6 +35,7 @@ class VistaAmministratore(QWidget):
 
         self.label_admin = QLabel("Amministratore")
         self.label_admin.setFont(QFont("American Typewriter", 13, 20, True))
+        self.label_admin.setStyleSheet("color: white;")
 
         self.h_admin_layout.addWidget(self.label_admin)
 
@@ -55,7 +58,6 @@ class VistaAmministratore(QWidget):
 
         self.v_layout.addLayout(self.h_layout)
 
-        self.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.setLayout(self.v_layout)
         self.setWindowTitle("Profilo Amministratore")
         self.rect = self.frameGeometry()
@@ -65,7 +67,7 @@ class VistaAmministratore(QWidget):
     def create_button(self, testo, comando, background_color):
         bottone = QPushButton(testo)
         bottone.setFont(self.font_bottone)
-        bottone.setStyleSheet(background_color + " " + "border-radius: 3px;" "padding: 5px;")
+        bottone.setStyleSheet(background_color + " " + "border-radius: 6px;" "padding: 5px;")
         bottone.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         bottone.clicked.connect(comando)
         return bottone
@@ -75,12 +77,12 @@ class VistaAmministratore(QWidget):
         self.vista_lista_clienti = VistaListaClienti()
         self.vista_lista_clienti.show()
 
-    #Mostra la lista delle prenotazioni
+    # Mostra la lista delle prenotazioni
     def go_lista_prenotazioni(self):
         self.vista_lista_prenotazioni = VistaListaPrenotazioni()
         self.vista_lista_prenotazioni.show()
 
-    #Mostra la lista dei film
+    # Mostra la lista dei film
     def go_lista_film(self):
         self.vista_lista_film = VistaListaFilm()
         self.vista_lista_film.show()
