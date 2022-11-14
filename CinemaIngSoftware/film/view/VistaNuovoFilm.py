@@ -1,4 +1,5 @@
-from PyQt5 import QtCore
+from PyQt5 import QtCore, Qt
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QLineEdit, QPushButton, QMessageBox
 from PyQt5.QtGui import QFont, QCursor
 
@@ -11,18 +12,21 @@ class VistaNuovoFilm(QWidget):
         super(VistaNuovoFilm, self).__init__(parent)
         self.controller = controller_lista_film
         self.aggiorna_lista = aggiorna_lista
+        self.move(330, 180)
+        self.setStyleSheet("background-color: rgb(65, 65, 65);")
 
         self.v_layout = QVBoxLayout()
         # fonts
-        self.font_label1 = QFont("Arial", 17)               # font semplice per i campi del cliente
-        self.font_label2 = QFont("Arial", 15, 15, True)     # font grassetto per le credenziali di accesso
+        self.font_label1 = QFont("Arial", 15)               # font per i campi
+        self.font_label2 = QFont("American Typewriter", 15, 15)     # font grassetto
         self.font_label2.setBold(True)
-        self.font_label3 = QFont("Arial", 17, 15, True)     # font per il titolo del form
+        self.font_label3 = QFont("American Typewriter", 18, 15, True) # font per il titolo
 
         # titolo
-        self.label_alto = QLabel("Aggiungi una nuova proiezione: ")
+        self.label_alto = QLabel("NUOVA PROIEZIONE ")
         self.label_alto.setFont(self.font_label3)
-        self.label_alto.setStyleSheet("color: rgb(0, 0, 255)")
+        self.label_alto.setAlignment(Qt.AlignCenter)
+        self.label_alto.setStyleSheet("color: rgb(255, 255, 255)")
         self.v_layout.addWidget(self.label_alto)
 
         self.v_layout.addSpacing(20)
@@ -38,8 +42,7 @@ class VistaNuovoFilm(QWidget):
 
         # bottone conferma
         self.bottone_conferma = QPushButton("Conferma")
-        self.bottone_conferma.setFont(self.font_label1)
-        self.bottone_conferma.setStyleSheet("background-color:#ccd9ff;")
+        self.bottone_conferma.setStyleSheet("font: 200 16pt \"American Typewriter\";" "background-color: rgb(200, 70, 70);" "color: white;")
         self.bottone_conferma.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.bottone_conferma.clicked.connect(self.inserisci_film)
         self.v_layout.addWidget(self.bottone_conferma)
@@ -49,13 +52,15 @@ class VistaNuovoFilm(QWidget):
         self.setGeometry(self.rect)
         self.setWindowTitle("Nuovo Film")
 
-    #Crea una label con la stringa passata come argomento al di sotto un campo editabile a li aggiunge al layout della finestra
+    # Crea una label con la stringa passata come argomento al di sotto un campo editabile a li aggiunge al layout della finestra
     def create_format_campo(self, testo):
         label = QLabel(testo)
-        label.setFont(self.font_label1)
+        label.setFont(self.font_label2)
+        label.setStyleSheet("color: white;")
         self.v_layout.addWidget(label)
 
         campo = QLineEdit()
+        campo.setStyleSheet("background-color: white;")
         campo.setFont(self.font_label1)
         self.v_layout.addWidget(campo)
         return campo

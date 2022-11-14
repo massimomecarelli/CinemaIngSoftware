@@ -11,29 +11,33 @@ class VistaListaFilm(QWidget):
     def __init__(self, parent=None):
         super(VistaListaFilm, self).__init__(parent)
         self.controller = ControlloreListaFilm()
+        self.setStyleSheet("background-color: rgb(65, 65, 65);")
 
         self.v_layout = QVBoxLayout()
 
         self.list_view = QListView()
+        self.list_view.setStyleSheet("background-color: white;")
         self.aggiorna_dati()
         self.v_layout.addWidget(self.list_view)
 
         self.h_layout = QHBoxLayout()
 
-        self.create_button("Nuovo", self.go_inserisci_film, "background-color: rgb(0, 255, 0);")
-        self.create_button("Elimina Film", self.elimina_film, "background-color: rgb(255, 0, 0);")
+        self.create_button("Nuovo", self.go_inserisci_film, "background-color: rgb(28,162,239);")
+        self.create_button("Elimina Film", self.elimina_film, "background-color: rgb(184,239,2);")
 
         self.v_layout.addLayout(self.h_layout)
         self.setLayout(self.v_layout)
         self.resize(300, 500)
-        self.move(250, 150)
+        self.move(300, 150)
         self.setWindowTitle("Lista Film")
         self.show()
 
     def create_button(self, testo, comando, background_color):
         bottone = QPushButton(testo)
-        bottone.setFont(QFont("American Typewriter", 15, 20))
-        bottone.setStyleSheet(background_color)
+        font_button = QFont("American Typewriter", 15)
+        font_button.setBold(True)
+        bottone.setFont(font_button)
+        bottone.setStyleSheet(background_color + " " + " border-radius: 8;")
         bottone.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         bottone.clicked.connect(comando)
         self.h_layout.addWidget(bottone)
@@ -46,7 +50,7 @@ class VistaListaFilm(QWidget):
             item = QStandardItem()
             item.setText(film.nome_film)
             item.setEditable(False)
-            item.setFont(QFont("Arial", 16))
+            item.setFont(QFont("American Typewriter", 16))
             self.list_view_model.appendRow(item)
         self.list_view.setModel(self.list_view_model)
 

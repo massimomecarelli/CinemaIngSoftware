@@ -1,8 +1,9 @@
+from PyQt5 import QtCore
 from PyQt5.QtCore import QDate
-from PyQt5.QtGui import QFont, QStandardItemModel, QStandardItem, QTextCharFormat, QColor, QKeySequence
+from PyQt5.QtGui import QFont, QStandardItemModel, QStandardItem, QTextCharFormat, QColor, QKeySequence, QCursor
 from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel, QCalendarWidget, QComboBox, QMessageBox, \
     QPushButton, QShortcut, QSpinBox
-from datetime import datetime, timedelta
+from datetime import datetime
 
 
 from lista_prenotazioni.controller.ControlloreListaPrenotazioni import ControlloreListaPrenotazioni
@@ -22,7 +23,7 @@ class VistaNuovaPrenotazione(QWidget):
 
         # prenotazione data spettacolo
         self.label_data = QLabel("Seleziona la data dello spettacolo:")
-        self.label_data.setStyleSheet("font: 500 15pt \"American Typewriter\";\n""color: rgb(255, 255, 255);\n" "background-color: rgb(255, 75, 75);\n""selection-color: rgb(170, 255, 0);")
+        self.label_data.setStyleSheet("font: 500 15pt \"American Typewriter\";" "color: rgb(255, 255, 255);" "background-color: rgb(200, 70, 70);" "selection-color: rgb(170, 255, 0);" "border-radius: 5;" "margin-left: 4px;")
         self.layout.addWidget(self.label_data, 0, 0)
 
         self.calendario = QCalendarWidget()
@@ -32,14 +33,11 @@ class VistaNuovaPrenotazione(QWidget):
             self.calendario.setMinimumDate(QDate(datetime.now().year, datetime.now().month, datetime.now().day))
         else:
             self.calendario.setMinimumDate(QDate(2022, 11, 20))
-        self.calendario.setMaximumDate(QDate(2023, 2, 20))
 
         cell_start = QTextCharFormat()
-        cell_start.setBackground(QColor("green"))
-        cell_stop = QTextCharFormat()
-        cell_stop.setBackground(QColor("red"))
+        cell_start.setBackground(QColor("grey"))
+
         self.calendario.setDateTextFormat(self.calendario.selectedDate(), cell_start)
-        self.calendario.setDateTextFormat(QDate(2023, 2, 20), cell_stop)
 
         self.layout.addWidget(self.calendario, 1, 0)
 
@@ -48,24 +46,24 @@ class VistaNuovaPrenotazione(QWidget):
         self.label_numero_spettacolo = QLabel("Seleziona l'orario dello spettacolo:")
         self.label_numero_spettacolo.setStyleSheet("font: 500 15pt \"American Typewriter\";\n"
                                           "color: rgb(255, 255, 255);\n"
-                                          "background-color: rgb(255, 75, 75);\n"
-                                          "selection-color: rgb(170, 255, 0);")
+                                          "background-color: rgb(200, 70, 70);\n"
+                                          "selection-color: rgb(170, 255, 0);" "border-radius: 5;" "margin-left: 4px;")
         self.layout.addWidget(self.label_numero_spettacolo, 3, 0)
 
         # selezione film
         self.label_film = QLabel("Seleziona il film:")
         self.label_film.setStyleSheet("font: 500 15pt \"American Typewriter\";\n"
                                                       "color: rgb(255, 255, 255);\n"
-                                                      "background-color: rgb(255, 75, 75);\n"
-                                                      "selection-color: rgb(170, 255, 0);")
+                                                      "background-color: rgb(200, 70, 70);\n"
+                                                      "selection-color: rgb(170, 255, 0);" "border-radius: 5;" "margin-left: 4px;")
         self.layout.addWidget(self.label_film, 5, 0)
 
          # selezione numero di biglietti
         self.label_numero_biglietti = QLabel("Numero di biglietti:")
         self.label_numero_biglietti.setStyleSheet("font: 500 15pt \"American Typewriter\";\n"
                                                       "color: rgb(255, 255, 255);\n"
-                                                      "background-color: rgb(255, 75, 75);\n"
-                                                      "selection-color: rgb(170, 255, 0);")
+                                                      "background-color: rgb(200, 70, 70);\n"
+                                                      "selection-color: rgb(170, 255, 0);" "border-radius: 5;" "margin-left: 4px;")
         self.layout.addWidget(self.label_numero_biglietti, 7, 0)
 
         self.get_film()
@@ -74,6 +72,7 @@ class VistaNuovaPrenotazione(QWidget):
         self.bottone_conferma = QPushButton("Prenota Ora")
         self.bottone_conferma.setFont(QFont("American Typewriter", 17, 100, True))
         self.bottone_conferma.setStyleSheet("background-color: rgb(31,219,6);")
+        self.bottone_conferma.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.bottone_conferma.clicked.connect(self.conferma_prenotazione)
         self.shortcut_open = QShortcut(QKeySequence('Return'), self)
         self.shortcut_open.activated.connect(self.conferma_prenotazione)
@@ -113,10 +112,10 @@ class VistaNuovaPrenotazione(QWidget):
         self.menu_film.setModel(self.model_menu_film)
 
         self.orario=14
-        for spettacolo in [1, 2, 3]:
+        for spettacolo in [1, 2, 3, 4]:
             item = QStandardItem()
             item.setText(str(self.orario) + ":00")
-            self.orario += 2
+            self.orario += 3
             item.setEditable(False)
             self.model_menu_numero_spettacolo.appendRow(item)
         self.menu_numero_spettacolo.setModel(self.model_menu_numero_spettacolo)
@@ -144,7 +143,7 @@ class VistaNuovaPrenotazione(QWidget):
         prenotazione = Prenotazione(self.username_cliente, numero_biglietti, film, data, numero_spettacolo)
 
         # Chiede la conferma per la prenotazione
-        risposta = QMessageBox.question(self, "Confermare la prenotazione?", "", QMessageBox.Yes, QMessageBox.No)
+        risposta = QMessageBox.question(self, "Confermare la prenotazione?", "Confermare la prenotazione?", QMessageBox.Yes, QMessageBox.No)
         if risposta == QMessageBox.No:
             return
         else:

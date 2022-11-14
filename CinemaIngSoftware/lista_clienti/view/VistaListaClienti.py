@@ -19,19 +19,19 @@ class VistaListaClienti(QWidget):
 
         self.h_layout = QHBoxLayout()
 
-        self.create_button("Elimina Cliente", self.elimina_cliente, "background-color: rgb(255, 0, 0);")
+        self.create_button("Elimina Cliente", self.elimina_cliente, "background-color: rgb(200, 70, 70);")
 
         self.v_layout.addLayout(self.h_layout)
         self.setLayout(self.v_layout)
         self.resize(300, 500)
-        self.move(250, 150)
+        self.move(300, 200)
         self.setWindowTitle("Lista Clienti")
         self.show()
 
     def create_button(self, testo, comando, background_color):
         bottone = QPushButton(testo)
-        bottone.setFont(QFont("Arial", 15, 1, True))
-        bottone.setStyleSheet(background_color)
+        bottone.setFont(QFont("American Typewriter", 16, 20))
+        bottone.setStyleSheet(background_color + " " + "border-radius: 8px;" "padding: 5px;" "color: #FFFFFF")
         bottone.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         bottone.clicked.connect(comando)
         self.h_layout.addWidget(bottone)

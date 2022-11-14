@@ -33,8 +33,8 @@ class VistaModificaCliente(QWidget):
 
         self.h_layout = QHBoxLayout()
 
-        self.create_button("Conferma Modifica", self.conferma_modifica_cliente, "background-color: rgb(70,200,70);")
-        self.create_button("Chiudi", self.annulla, "background-color: rgb(255,10,10);")
+        self.create_button("Conferma Modifica", self.conferma_modifica_cliente, "background-color: rgb(75,200,75);")
+        self.create_button("Chiudi", self.annulla, "background-color: rgb(255,20,20);")
 
         self.v_layout.addLayout(self.h_layout)
         self.setLayout(self.v_layout)
@@ -70,7 +70,6 @@ class VistaModificaCliente(QWidget):
         campo = QLineEdit()
         campo.setFont(QFont("Arial", 16))
         campo.setText(get_campo)
-        campo.setStyleSheet("margin-left: 10px;" "margin-right: 10px;")
         self.v_layout.addWidget(campo)
         self.v_layout.addSpacing(10)
         return campo
@@ -78,8 +77,8 @@ class VistaModificaCliente(QWidget):
     # Crea un bottone con il testo, la funzione e il colore di abckground passati e lo aggiunge al layout dei bottoni
     def create_button(self, testo, comando, background_color):
         bottone = QPushButton(testo)
-        bottone.setFont(QFont("American Typewriter", 15, 10, True))
-        bottone.setStyleSheet(background_color + " " + "color: #FFFFFF;" "border-radius: 8px;")
+        bottone.setFont(QFont("Arial", 15, 10))
+        bottone.setStyleSheet(background_color + " " + "color: #FFFFFF;"  "margin-top: 10px;")
         bottone.clicked.connect(comando)
         self.h_layout.addWidget(bottone)
 
