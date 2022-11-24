@@ -13,17 +13,19 @@ class VistaRegistrazione(QWidget):
         super(VistaRegistrazione, self).__init__(parent)
         self.controller = ControlloreListaClienti()
 
+        self.move(400, 200)
         self.v_layout = QVBoxLayout()
         # fonts
-        self.font_label1 = QFont("Arial", 17)               # font semplice per i campi del cliente
-        self.font_label2 = QFont("Arial", 15, 15, True)     # font grassetto per le credenziali di accesso
+        self.font_label1 = QFont("American Typewriter", 17)               # font per i campi del cliente
+        self.font_label2 = QFont("American Typewriter", 15, 15, True)     # font grassetto per le password
         self.font_label2.setBold(True)
-        self.font_label3 = QFont("Arial", 17, 15, True)     # font per il titolo del form
+        self.font_label3 = QFont("American Typewriter", 17, 15, True)     # font per il titolo del form
+        self.font_label_campo = QFont("Arial", 16)
 
         # titolo
         self.label_alto = QLabel("Compila il form di registrazione: ")
         self.label_alto.setFont(self.font_label3)
-        self.label_alto.setStyleSheet("color: rgb(0, 0, 255)")
+        self.label_alto.setStyleSheet("color: rgb(200, 70, 70)")
         self.v_layout.addWidget(self.label_alto)
 
         self.v_layout.addSpacing(20)
@@ -43,7 +45,7 @@ class VistaRegistrazione(QWidget):
         # bottone conferma
         self.bottone_conferma = QPushButton("Conferma")
         self.bottone_conferma.setFont(self.font_label1)
-        self.bottone_conferma.setStyleSheet("background-color:#ccd9ff;")
+        self.bottone_conferma.setStyleSheet("background-color: rgb(200, 70, 70);" "border-radius: 5px;" "color: white;" "padding: 4px;")
         self.bottone_conferma.clicked.connect(self.registra_cliente)
         self.v_layout.addWidget(self.bottone_conferma)
 
@@ -59,7 +61,7 @@ class VistaRegistrazione(QWidget):
         self.v_layout.addWidget(label)
 
         campo = QLineEdit()
-        campo.setFont(self.font_label1)
+        campo.setFont(self.font_label_campo)
         self.v_layout.addWidget(campo)
         return campo
 
@@ -70,7 +72,7 @@ class VistaRegistrazione(QWidget):
         self.v_layout.addWidget(label)
 
         campo = PasswordEdit()
-        campo.setFont(self.font_label1)
+        campo.setFont(self.font_label_campo)
         campo.setEchoMode(QLineEdit.Password)
         self.v_layout.addWidget(campo)
         return campo

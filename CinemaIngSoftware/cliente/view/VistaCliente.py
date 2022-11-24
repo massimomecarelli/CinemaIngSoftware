@@ -94,7 +94,7 @@ class VistaCliente(QWidget):
         risposta = QMessageBox.warning(self, "Elimina Profilo", "Sei sicuro di voler elimare il tuo profilo?\nL'azione è irreversibile", QMessageBox.Yes, QMessageBox.No)
         if risposta == QMessageBox.Yes:
             self.close()
-            self.controllore_lista_clienti.elimina_cliente_by_user(self.controllore_cliente.get_user_cliente())
+            self.controllore_lista_clienti.elimina_cliente_by_user(self.controllore_cliente.get_username_cliente())
             self.controllore_lista_clienti.save_data()
         else:
             pass
