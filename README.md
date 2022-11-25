@@ -1,7 +1,7 @@
 # CinemaIngSoftware
 <html>
   <h2>Nota</h2>
-      <div>Nel sistema sono stati inseriti profili di default sia per il Cliente che per l'Admin:</div>
+      <div>Nel sistema sono stati inseriti profili di default sia per il Cliente che per l'Admin:</div><br>
         <table style="margin-left: 40px;">
         <tr>
             <th>Admin</th>
