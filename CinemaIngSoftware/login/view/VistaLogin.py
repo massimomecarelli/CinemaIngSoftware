@@ -85,7 +85,7 @@ class VistaLogin(QWidget):
             QMessageBox.critical(self, "Errore", "Il nome utente inserito non esiste", QMessageBox.Ok,
                                  QMessageBox.Ok)
 
-    # Controlla che l'email e la password inseriti coincidano con le credenziali di una admin, in caso affermativo
+    # Controlla che l'utente e la password inseriti coincidano con le credenziali di una admin, in caso affermativo
     # ritorna True e visualizza il profilo dell'amministratore, altrimenti ritorna False
     def controlla_admin(self, username, password):
 

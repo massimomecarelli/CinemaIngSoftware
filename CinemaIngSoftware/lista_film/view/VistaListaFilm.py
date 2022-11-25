@@ -59,7 +59,7 @@ class VistaListaFilm(QWidget):
         self.vista_inserisci_film.show()
 
 
-    # Chiede conferma di eliminare il cliente selezionato, in caso affermativo lo cancella
+    # Chiede conferma di eliminare il film selezionato, in caso affermativo lo cancella
     def elimina_film(self):
         try:
             indice = self.list_view.selectedIndexes()[0].row()
