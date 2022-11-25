@@ -26,7 +26,6 @@ class VistaListaPrenotazioni(QWidget):
         self.calendario.setGridVisible(True)
         self.calendario.setVerticalHeaderFormat(QCalendarWidget.NoVerticalHeader)
         self.calendario.setMinimumDate(QDate(2022, 11, 20))
-        self.calendario.setMaximumDate(QDate(2023, 2, 15))
 
         self.g_layout.addWidget(self.calendario, 1, 0)
 

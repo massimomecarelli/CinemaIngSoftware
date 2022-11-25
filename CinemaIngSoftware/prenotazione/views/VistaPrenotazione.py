@@ -15,6 +15,7 @@ class VistaPrenotazione(QWidget):
         self.create_label("Username: ", self.controllore_prenotazione.get_username_prenotazione())
         self.create_label("Data: ", self.controllore_prenotazione.get_data_prenotazione().strftime('%d/%m/%Y'))
         self.create_label("Numero di biglietti: ", str(self.controllore_prenotazione.get_numero_biglietti()))
+        self.create_label("Film: ", str(self.controllore_prenotazione.get_nome_film()))
         self.create_label("Orario Spettacolo: ", self.controllore_prenotazione.get_numero_spettacolo())
 
         self.setStyleSheet("background-color: rgb(255, 255, 255);")

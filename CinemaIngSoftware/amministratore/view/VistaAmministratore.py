@@ -13,7 +13,7 @@ class VistaAmministratore(QWidget):
     def __init__(self, nome, parent=None):
         super(VistaAmministratore, self).__init__(parent)
         self.font_bottone = QFont("American Typewriter", 15, 20)
-        self.move(250, 150)
+        self.move(400, 200)
 
         self.v_layout = QVBoxLayout()
         self.setStyleSheet("background-color: rgb(5, 5, 5);")

@@ -133,7 +133,7 @@ class VistaListaPrenotazioniAdmin(QWidget):
         item_prenotazioni_tot = QStandardItem()
         item_prenotazioni_tot.setFont(self.font)
         item_prenotazioni_tot.setEditable(False)
-        item_prenotazioni_tot.setText("Account che hanno effettuato prenotazioni: " + str(numero_tot_prenotazioni))
+        item_prenotazioni_tot.setText("Numero di Prenotazioni: " + str(numero_tot_prenotazioni))
         self.modello_statistiche.appendRow(item_prenotazioni_tot)
 
         self.lista_stats.setModel(self.modello_statistiche)

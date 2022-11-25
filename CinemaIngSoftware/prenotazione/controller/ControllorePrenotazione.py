@@ -17,3 +17,6 @@ class ControllorePrenotazione:
 
     def get_numero_biglietti(self):
         return self.model.numero_biglietti
+
+    def get_nome_film(self):
+        return self.model.nome_film
