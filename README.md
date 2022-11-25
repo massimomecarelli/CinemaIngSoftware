@@ -1,13 +1,13 @@
 # CinemaIngSoftware
 <html>
   <h2>Nota</h2>
-      <p>Nel sistema sono stati inseriti profili di default sia per il Cliente che per l'Admin:</p>
-        <table>
-          <th>Admin:</th>
-          <td>Username: admin</td><br><td>Password: admin</td>
-        </table>
-        <table>
-          <th>Cliente:</th>
-          <td>Username: prova1</td><td>Password: prova1</td>
+      <div>Nel sistema sono stati inseriti profili di default sia per il Cliente che per l'Admin:</div>
+        <table style="margin-left: 40px;">
+        <tr>
+            <th>Admin</th>
+            <th>Cliente</th>
+        </tr>
+          <tr><td>Username: admin</td><td>Username: prova1</td></tr>
+            <tr><td>Password: admin</td><td>Password: prova1</td></tr>
         </table>
 </html>
