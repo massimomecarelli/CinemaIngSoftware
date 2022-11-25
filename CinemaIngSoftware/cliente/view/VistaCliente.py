@@ -12,7 +12,7 @@ class VistaCliente(QWidget):
 # Il cliente è stato passato dal login al controllore, e il controllore è stato passato poi a questa vista
     def __init__(self, controllore_cliente, parent=None):
         super(VistaCliente, self).__init__(parent)
-
+        self.move(400, 200)
         self.controllore_cliente = controllore_cliente
 
         self.v_layout = QVBoxLayout()
